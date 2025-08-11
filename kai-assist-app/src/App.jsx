@@ -88,6 +88,7 @@ const simulateQRScan = () => {
 
       <main className="max-w-4xl mx-auto p-4 space-y-6">
         <CurrentTimeDisplay currentTime={currentTime} />
+        <FaceRecognition t={t} />
         <StationSelection t={t} selectedStation={selectedStation} setSelectedStation={setSelectedStation} />
         <QRScanner t={t} ticketData={ticketData} simulateQRScan={simulateQRScan} />
         <TicketInfo t={t} ticketData={ticketData} />
@@ -95,7 +96,6 @@ const simulateQRScan = () => {
         <StationMap t={t} ticketData={ticketData} />
         <ProcedureGuide t={t} />
         <StationInfoHub t={t} stationData={stationData} selectedStation={selectedStation} />
-        <FaceRecognition t={t} />
       </main>
 
       <Footer />
