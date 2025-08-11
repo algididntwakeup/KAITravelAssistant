@@ -6,7 +6,7 @@ export const Footer = () => (
         <div className="max-w-4xl mx-auto text-center">
             <div className="flex items-center justify-center space-x-2 mb-2">
                 <Train className="h-6 w-6" />
-                <span className="font-semibold">PT Kereta Api Indonesia</span>
+                <span className="font-semibold">PT Kereta Api Indonesia (Persero) </span>
             </div>
             <p className="text-gray-400 text-sm">Melayani dengan sepenuh hati</p>
         </div>

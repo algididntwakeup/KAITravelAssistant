@@ -36,7 +36,7 @@ export const stationData = {
 // Teks terjemahan untuk multibahasa
 export const text = {
   id: {
-    title: "KAI Travel Assistant",
+    title: "Travel Assistant",
     scanQR: "Pindai Tiket QR",
     ticketInfo: "Informasi Tiket",
     stationMap: "Denah Stasiun",
@@ -69,7 +69,7 @@ export const text = {
     boardTrain: "Naik Kereta"
   },
   en: {
-    title: "KAI Travel Assistant",
+    title: "Travel Assistant",
     scanQR: "Scan QR Ticket",
     ticketInfo: "Ticket Information",
     stationMap: "Station Map",
