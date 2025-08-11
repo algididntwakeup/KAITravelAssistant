@@ -25,6 +25,8 @@ const App = () => {
   const [language, setLanguage] = useState('id');
   const [selectedStation, setSelectedStation] = useState('bandung');
   const [ticketData, setTicketData] = useState(null);
+  const [isLoading, setIsLoading] = useState(false); // <-- Buat animasi loding
+  const [error, setError] = useState(null);       // <-- Tbiar ada error handling
 
   // Ambil teks terjemahan berdasarkan state bahasa
   const t = text[language];
@@ -38,9 +40,22 @@ const App = () => {
   }, []);
 
   // Fungsi untuk simulasi scan QR
-  const simulateQRScan = () => {
-    setTicketData(mockTicketData);
-  };
+const simulateQRScan = () => {
+    setIsLoading(true); // 1. Mulai loading
+    setError(null);     // 2. Bersihkan error sebelumnya
+    setTicketData(null); // 3. Bersihkan data tiket lama
+
+    // 4. Simulasi jeda waktu untuk mengambil data (2 detik)
+    setTimeout(() => {
+      // 50% kemungkinan berhasil, 50% kemungkinan gagal (untuk simulasi)
+      if (Math.random() > 0.5) {
+        setTicketData(mockTicketData); // Berhasil: set data tiket
+      } else {
+        setError("QR Code tidak valid atau tidak dapat dibaca. Silakan coba lagi."); // Gagal: set pesan error
+      }
+      setIsLoading(false); // 6. Selesai loading
+    }, 2000);
+};
 
   // Logika untuk menampilkan peringatan waktu
   const getDepartureWarning = () => {
