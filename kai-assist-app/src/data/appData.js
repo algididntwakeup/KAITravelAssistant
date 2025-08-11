@@ -1,0 +1,104 @@
+// src/data/appData.js
+
+// Data tiket tiruan untuk simulasi
+export const mockTicketData = {
+  passengerName: "John Doe",
+  trainName: "Argo Parahyangan",
+  trainNumber: "KA 06",
+  car: "EKS 1",
+  seat: "5A",
+  platform: "2",
+  departure: "14:30",
+  arrival: "17:45",
+  from: "Bandung",
+  to: "Gambir",
+  date: "11 Agustus 2025"
+};
+
+// Data informasi stasiun
+export const stationData = {
+  bandung: {
+    name: "Stasiun Bandung",
+    parking: "Tersedia 200 slot",
+    gates: "Gate A, B, C",
+    hours: "04:00 - 23:00",
+    platforms: ["1", "2", "3", "4"]
+  },
+  kiaracondong: {
+    name: "Stasiun Kiaracondong",
+    parking: "Tersedia 150 slot",
+    gates: "Gate 1, 2",
+    hours: "05:00 - 22:00",
+    platforms: ["1", "2", "3"]
+  }
+};
+
+// Teks terjemahan untuk multibahasa
+export const text = {
+  id: {
+    title: "KAI Travel Assistant",
+    scanQR: "Pindai Tiket QR",
+    ticketInfo: "Informasi Tiket",
+    stationMap: "Denah Stasiun",
+    faceRecognition: "Face Recognition",
+    timeReminder: "Pengingat Waktu",
+    stationInfo: "Info Stasiun",
+    procedure: "Panduan Prosedur",
+    selectStation: "Pilih Stasiun",
+    bandungStation: "Stasiun Bandung",
+    kiaracondongStation: "Stasiun Kiaracondong",
+    passengerName: "Nama Penumpang",
+    trainName: "Nama Kereta",
+    car: "Gerbong",
+    seat: "Kursi",
+    platform: "Peron",
+    departure: "Keberangkatan",
+    registerFR: "Daftar Face Recognition",
+    frDescription: "Gunakan teknologi pengenalan wajah untuk akses lebih cepat ke stasiun",
+    parking: "Parkir",
+    accessGate: "Gate Akses",
+    operationalHours: "Jam Operasional",
+    boarding1h: "1 Jam menuju keberangkatan",
+    boarding30m: "30 Menit menuju keberangkatan",
+    boarding15m: "15 Menit menuju keberangkatan",
+    boarding5m: "5 Menit menuju keberangkatan - Segera ke peron!",
+    stepByStep: "Panduan Langkah demi Langkah",
+    enterStation: "Masuk Stasiun",
+    checkTicket: "Periksa Tiket",
+    findPlatform: "Cari Peron",
+    boardTrain: "Naik Kereta"
+  },
+  en: {
+    title: "KAI Travel Assistant",
+    scanQR: "Scan QR Ticket",
+    ticketInfo: "Ticket Information",
+    stationMap: "Station Map",
+    faceRecognition: "Face Recognition",
+    timeReminder: "Time Reminder",
+    stationInfo: "Station Info",
+    procedure: "Procedure Guide",
+    selectStation: "Select Station",
+    bandungStation: "Bandung Station",
+    kiaracondongStation: "Kiaracondong Station",
+    passengerName: "Passenger Name",
+    trainName: "Train Name",
+    car: "Car",
+    seat: "Seat",
+    platform: "Platform",
+    departure: "Departure",
+    registerFR: "Register Face Recognition",
+    frDescription: "Use facial recognition technology for faster station access",
+    parking: "Parking",
+    accessGate: "Access Gate",
+    operationalHours: "Operating Hours",
+    boarding1h: "1 Hour to departure",
+    boarding30m: "30 Minutes to departure",
+    boarding15m: "15 Minutes to departure",
+    boarding5m: "5 Minutes to departure - Head to platform now!",
+    stepByStep: "Step by Step Guide",
+    enterStation: "Enter Station",
+    checkTicket: "Check Ticket",
+    findPlatform: "Find Platform",
+    boardTrain: "Board Train"
+  }
+};
