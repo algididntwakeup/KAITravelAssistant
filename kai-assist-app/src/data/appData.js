@@ -105,11 +105,11 @@ export const text = {
 
 
 export const facilitiesData = [
-    { icon: 'Wifi', name: 'WiFi Gratis', available: true },
     { icon: 'Coffee', name: 'Kafe/Resto', available: true },
-    { icon: 'ShoppingBag', name: 'Toko', available: false },
+    { icon: 'ShoppingBag', name: 'Toko', available: true },
     { icon: 'CreditCard', name: 'ATM', available: true },
-    { icon: 'Phone', name: 'Charging Station', available: true }
+    { icon: 'Phone', name: 'Charging Station', available: true },
+    { icon: 'Landmark', name: 'Mushola', available: true }
 ];
 
 export const announcementsData = [

@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { Info, Car, Users, Clock, MapPin, Wifi, Coffee, ShoppingBag, CreditCard, Phone, AlertCircle, Star } from 'lucide-react';
+import { Info, Car, Users, Clock, MapPin, Wifi, Coffee, ShoppingBag, CreditCard, Phone, AlertCircle, Landmark } from 'lucide-react';
 
 const iconMap = {
     Wifi,
     Coffee,
     ShoppingBag,
     CreditCard,
-    Phone
+    Phone,
+    Landmark
 };
 
 export const StationInfoHub = ({ t, stationData, selectedStation, facilities, announcements }) => {
@@ -15,15 +16,14 @@ export const StationInfoHub = ({ t, stationData, selectedStation, facilities, an
     return (
         <div className="bg-white rounded-xl shadow-lg p-6 max-w-6xl mx-auto">
             {/* Header with animated gradient */}
-            <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-green-600 rounded-lg p-4 mb-6 text-white relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-green-600 opacity-80"></div>
+                        <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg p-4 mb-6 text-white relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-purple-700 opacity-80"></div>
                 <div className="relative z-10">
                     <h2 className="text-xl font-bold flex items-center">
                         <Info className="h-6 w-6 mr-3 animate-pulse" />
                         {t.stationInfo}
                         <div className="ml-auto flex items-center">
-                            <Star className="h-5 w-5 text-yellow-300 mr-1" />
-                            <span className="text-sm">4.8</span>
+                            
                         </div>
                     </h2>
                     <p className="text-blue-100 mt-1">Informasi lengkap stasiun kereta api</p>
