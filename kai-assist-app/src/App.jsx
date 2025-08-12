@@ -25,6 +25,7 @@ const App = () => {
   const [language, setLanguage] = useState('id');
   const [selectedStation, setSelectedStation] = useState('bandung');
   const [ticketData, setTicketData] = useState(null);
+  const [showOfflineNotice, setShowOfflineNotice] = useState(true); 
   const [isLoading, setIsLoading] = useState(false); // <-- Buat animasi loding
   const [error, setError] = useState(null);       // <-- Tbiar ada error handling
 
@@ -87,7 +88,12 @@ const simulateQRScan = () => {
       <TimeWarningBanner warning={warning} />
 
       <main className="max-w-4xl mx-auto p-4 space-y-6">
-        <CurrentTimeDisplay currentTime={currentTime} />
+        <CurrentTimeDisplay 
+          currentTime={currentTime} 
+          showOfflineNotice={showOfflineNotice}       
+          setShowOfflineNotice={setShowOfflineNotice} 
+        />
+          <StationSelection t={t} selectedStation={selectedStation} setSelectedStation={setSelectedStation} />
         <StationInfoHub 
           t={t} 
           stationData={stationData} 
@@ -96,7 +102,6 @@ const simulateQRScan = () => {
           announcements={announcementsData} // Pass the new data as props
         />
         <FaceRecognition t={t} />
-        <StationSelection t={t} selectedStation={selectedStation} setSelectedStation={setSelectedStation} />
         <QRScanner t={t} ticketData={ticketData} simulateQRScan={simulateQRScan} />
         <TicketInfo t={t} ticketData={ticketData} />
         <TimeReminder t={t} ticketData={ticketData} currentTime={currentTime} />
