@@ -5,7 +5,7 @@ import { Camera, ShieldCheck, ArrowRight } from 'lucide-react';
 // Fungsi untuk mengarahkan pengguna ke halaman pendaftaran KAI Access
 const redirectToKAI = () => {
   // Buka di tab baru
-  window.open('https://www.kai.id/access', '_blank');
+  window.open('https://landing-page-kai-access.vercel.app/', '_blank');
 };
 
 export const FaceRecognition = ({ t }) => (
