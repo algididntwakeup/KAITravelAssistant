@@ -102,3 +102,18 @@ export const text = {
     boardTrain: "Board Train"
   }
 };
+
+
+export const facilitiesData = [
+    { icon: 'Wifi', name: 'WiFi Gratis', available: true },
+    { icon: 'Coffee', name: 'Kafe/Resto', available: true },
+    { icon: 'ShoppingBag', name: 'Toko', available: false },
+    { icon: 'CreditCard', name: 'ATM', available: true },
+    { icon: 'Phone', name: 'Charging Station', available: true }
+];
+
+export const announcementsData = [
+    { type: 'info', message: 'Layanan kereta api berjalan normal hari ini' },
+    { type: 'warning', message: 'Pemeliharaan eskalator Lt.2 jam 14:00-16:00' },
+    { type: 'success', message: 'Promo tiket weekend - diskon 20%!' }
+];

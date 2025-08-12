@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 
 // Import data terpusat
-import { mockTicketData, stationData, text } from './data/appData';
+import { mockTicketData, stationData, text, facilitiesData, announcementsData } from './data/appData';
 
 // Import semua komponen yang sudah kita pisah
 import { Header } from './components/Header';
@@ -88,6 +88,13 @@ const simulateQRScan = () => {
 
       <main className="max-w-4xl mx-auto p-4 space-y-6">
         <CurrentTimeDisplay currentTime={currentTime} />
+        <StationInfoHub 
+          t={t} 
+          stationData={stationData} 
+          selectedStation={selectedStation}
+          facilities={facilitiesData} // Pass the new data as props
+          announcements={announcementsData} // Pass the new data as props
+        />
         <FaceRecognition t={t} />
         <StationSelection t={t} selectedStation={selectedStation} setSelectedStation={setSelectedStation} />
         <QRScanner t={t} ticketData={ticketData} simulateQRScan={simulateQRScan} />
@@ -95,7 +102,6 @@ const simulateQRScan = () => {
         <TimeReminder t={t} ticketData={ticketData} currentTime={currentTime} />
         <StationMap t={t} ticketData={ticketData} />
         <ProcedureGuide t={t} />
-        <StationInfoHub t={t} stationData={stationData} selectedStation={selectedStation} />
       </main>
 
       <Footer />
