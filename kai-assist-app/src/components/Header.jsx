@@ -4,16 +4,17 @@ import { Globe } from 'lucide-react';
 import { KaiLogo } from './KaiLogo';
 
 export const Header = ({ language, setLanguage }) => (
-  // Di sini perubahannya: kita gunakan warna bawaan Tailwind
-  // from-indigo-800: Ungu kebiruan yang sangat gelap
-  // to-purple-600: Ungu yang lebih cerah
-  <header className="bg-gradient-to-l from-indigo-800 to-purple-600 text-white p-4 shadow-lg">
+  <header className="bg-gradient-to-r from-indigo-800 to-purple-600 text-white p-4 shadow-lg">
     <div className="max-w-7xl mx-auto flex justify-between items-center px-4 lg:px-6">
       
       <div className="flex items-center gap-4">
         <KaiLogo className="h-8 w-auto" />
-        <div className="w-px h-8 bg-white/30" /> 
-        <h1 className="text-xl font-regular font-poppins tracking-wide">
+        
+        {/* Garis pemisah ini sekarang akan hilang di layar kecil (di bawah 768px) */}
+        <div className="w-px h-8 bg-white/30 hidden md:block" /> 
+        
+        {/* Judul ini sekarang akan hilang di layar kecil (di bawah 768px) */}
+        <h1 className="text-xl font-semibold font-poppins tracking-wide hidden md:block">
           TravelAssistant
         </h1>
       </div>
