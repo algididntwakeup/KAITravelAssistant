@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Info, Car, Users, Clock, MapPin, Wifi, Coffee, ShoppingBag, CreditCard, Phone, AlertCircle, Landmark } from 'lucide-react';
 
+import { AvailableTrains } from './AvailableTrains';
 import { StationMap } from './StationMap';
 import { ProcedureGuide } from './ProcedureGuide';
 
@@ -18,7 +19,7 @@ const colorStyles = {
     gray: { gradient: 'from-gray-50 to-gray-100 border-gray-200', bg: 'bg-gray-400', text: 'text-gray-600', textMedium: 'text-gray-500' }
 };
 
-export const StationInfoHub = ({ t, stationData, selectedStation, facilities, announcements, ticketData }) => {
+export const StationInfoHub = ({ t, stationData, selectedStation, facilities, announcements, ticketData, availableTrains }) => {
     const [activeTab, setActiveTab] = useState('info');
     const currentStation = stationData[selectedStation];
 
@@ -89,6 +90,10 @@ export const StationInfoHub = ({ t, stationData, selectedStation, facilities, an
                             </div>
                         </div>
                     </div>
+                              <AvailableTrains 
+                                        t={t}
+                                        trains={availableTrains[selectedStation]}
+                                    />
                     <StationMap t={t} ticketData={ticketData} />
                 </div>
             )}

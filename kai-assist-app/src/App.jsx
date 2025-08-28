@@ -1,25 +1,24 @@
 // src/App.jsx
 import React, { useState, useEffect } from 'react';
 
-// Import data terpusat
-import { mockTicketData, stationData, text, facilitiesData, announcementsData } from './data/appData';
+// Import data terpusat (dengan ekstensi file yang benar)
+import { text, mockTicketData, stationData, facilitiesData, announcementsData, availableTrains } from './data/appData.js';
 
-// Import semua komponen yang sudah kita pisah
-import { Header } from './components/Header';
-import { TimeWarningBanner } from './components/TimeWarningBanner';
-import { CurrentTimeDisplay } from './components/CurrentTimeDisplay';
-import { StationSelection } from './components/StationSelection';
-import { QRScanner } from './components/QRScanner';
-import { TicketInfo } from './components/TicketInfo';
-// StationMap dan ProcedureGuide tidak perlu di-import di sini lagi
-import { TimeReminder } from './components/TimeReminder';
-import { FaceRecognition } from './components/FaceRecognition';
-import { StationInfoHub } from './components/StationInfoHub';
-import { Footer } from './components/Footer';
-
+// Import semua komponen yang sudah kita pisah (dengan ekstensi file yang benar)
+import { Header } from './components/Header.jsx';
+import { TimeWarningBanner } from './components/TimeWarningBanner.jsx';
+import { CurrentTimeDisplay } from './components/CurrentTimeDisplay.jsx';
+import { StationSelection } from './components/StationSelection.jsx';
+import { QRScanner } from './components/QRScanner.jsx';
+import { TicketInfo } from './components/TicketInfo.jsx';
+import { TimeReminder } from './components/TimeReminder.jsx';
+import { FaceRecognition } from './components/FaceRecognition.jsx';
+import { StationInfoHub } from './components/StationInfoHub.jsx';
+import { Footer } from './components/Footer.jsx';
+// Hapus import TrainSchedule dan komponen lain yang sudah pindah
 
 const App = () => {
-  // ... (State management Anda tetap sama)
+  // State management
   const [currentTime, setCurrentTime] = useState(new Date());
   const [language, setLanguage] = useState('id');
   const [selectedStation, setSelectedStation] = useState('bandung');
@@ -30,7 +29,7 @@ const App = () => {
 
   const t = text[language];
 
-  // ... (useEffect dan fungsi Anda tetap sama)
+  // Efek untuk update jam setiap detik
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentTime(new Date());
@@ -38,6 +37,7 @@ const App = () => {
     return () => clearInterval(timer);
   }, []);
 
+  // Fungsi untuk simulasi scan QR
   const simulateQRScan = () => {
     setIsLoading(true);
     setError(null);
@@ -52,6 +52,7 @@ const App = () => {
     }, 2000);
   };
 
+  // Logika untuk menampilkan peringatan waktu
   const getDepartureWarning = () => {
     if (!ticketData) return null;
     const now = new Date();
@@ -68,8 +69,9 @@ const App = () => {
 
   const warning = getDepartureWarning();
 
+  // Render UI dengan menyusun komponen
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-sky-100">
       <Header t={t} language={language} setLanguage={setLanguage} />
       <TimeWarningBanner warning={warning} />
 
@@ -87,7 +89,9 @@ const App = () => {
           selectedStation={selectedStation}
           facilities={facilitiesData}
           announcements={announcementsData}
-          ticketData={ticketData} // <-- Kirim data tiket ke sini
+          ticketData={ticketData}
+          // Kirim data jadwal kereta ke StationInfoHub
+          availableTrains={availableTrains}
         />
 
         <FaceRecognition t={t} />
@@ -101,7 +105,6 @@ const App = () => {
         <TicketInfo t={t} ticketData={ticketData} />
         <TimeReminder t={t} ticketData={ticketData} currentTime={currentTime} />
         
-        {/* StationMap dan ProcedureGuide sudah dipindahkan */}
       </main>
 
       <Footer />

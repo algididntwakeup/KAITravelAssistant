@@ -56,7 +56,7 @@ export const text = {
     registerFR: "Daftar Sekarang & Nikmati Kemudahannya",
     frDescription: "Lewati antrean panjang dan lupakan KTP. Daftar sekali, nikmati kemudahan boarding selamanya dengan teknologi pemindai wajah.",
     parking: "Parkir",
-    accessGate: "Gate Akses",
+    accessGate: "Gate Face Recognition",
     operationalHours: "Jam Operasional",
     boarding1h: "1 Jam menuju keberangkatan",
     boarding30m: "30 Menit menuju keberangkatan",
@@ -66,7 +66,9 @@ export const text = {
     enterStation: "Masuk Stasiun",
     checkTicket: "Periksa Tiket",
     findPlatform: "Cari Peron",
-    boardTrain: "Naik Kereta"
+    boardTrain: "Naik Kereta",
+      availableTrains: "Kereta yang Tersedia", // Teks baru
+    platformInfoNotice: "Untuk informasi peron dan jam keberangkatan, silakan tanyakan petugas di stasiun.", // Teks baru
   },
   en: {
     title: "Travel Assistant",
@@ -99,7 +101,9 @@ export const text = {
     enterStation: "Enter Station",
     checkTicket: "Check Ticket",
     findPlatform: "Find Platform",
-    boardTrain: "Board Train"
+    boardTrain: "Board Train",
+    availableTrains: "Available Trains", // Teks baru
+    platformInfoNotice: "For platform and departure time information, please ask the staff at the station.", 
   }
 };
 
@@ -117,3 +121,20 @@ export const announcementsData = [
     { type: 'warning', message: 'Pemeliharaan eskalator Lt.2 jam 14:00-16:00' },
     { type: 'success', message: 'Promo tiket weekend - diskon 20%!' }
 ];
+
+export const availableTrains = {
+  bandung: [
+    'Argo Parahyangan', 'Lodaya', 'Argo Wilis', 'Cikuray', 'Malabar', 
+    'Harina', 'Papandayan', 'Ciremai', 'Turangga', 'Pangandaran'
+  ],
+  kiaracondong: [
+    'Pasundan', 'Kutojaya Selatan', 'Serayu', 'Pangandaran', 'Papandayan'
+  ],
+
+  kiaracondong: [
+    { name: 'Kutojaya Selatan', destination: 'Kutoarjo', type: 'Ekonomi' },
+    { name: 'Lokal Cibatu', destination: 'Cibatu', type: 'Lokal' },
+    { name: 'Pasundan', destination: 'Surabaya Gubeng', type: 'Ekonomi' },
+    { name: 'Kahuripan', destination: 'Blitar', type: 'Ekonomi' },
+  ]
+};
