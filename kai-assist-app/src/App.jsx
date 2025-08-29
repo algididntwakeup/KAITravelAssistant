@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 
 // Import data terpusat (dengan ekstensi file yang benar)
-import { text, mockTicketData, stationData, facilitiesData, announcementsData, availableTrains } from './data/appData.js';
+import { mockTicketData, stationData, text, facilitiesData, announcementsData, availableTrains } from './data/appData.js';
 
 // Import semua komponen yang sudah kita pisah (dengan ekstensi file yang benar)
 import { Header } from './components/Header.jsx';
@@ -15,7 +15,6 @@ import { TimeReminder } from './components/TimeReminder.jsx';
 import { FaceRecognition } from './components/FaceRecognition.jsx';
 import { StationInfoHub } from './components/StationInfoHub.jsx';
 import { Footer } from './components/Footer.jsx';
-// Hapus import TrainSchedule dan komponen lain yang sudah pindah
 
 const App = () => {
   // State management

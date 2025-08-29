@@ -56,7 +56,7 @@ export const text = {
     registerFR: "Daftar Sekarang & Nikmati Kemudahannya",
     frDescription: "Lewati antrean panjang dan lupakan KTP. Daftar sekali, nikmati kemudahan boarding selamanya dengan teknologi pemindai wajah.",
     parking: "Parkir",
-    accessGate: "Gate Face Recognition",
+    accessGate: "Gate Akses",
     operationalHours: "Jam Operasional",
     boarding1h: "1 Jam menuju keberangkatan",
     boarding30m: "30 Menit menuju keberangkatan",
@@ -67,8 +67,8 @@ export const text = {
     checkTicket: "Periksa Tiket",
     findPlatform: "Cari Peron",
     boardTrain: "Naik Kereta",
-      availableTrains: "Kereta yang Tersedia", // Teks baru
-    platformInfoNotice: "Untuk informasi peron dan jam keberangkatan, silakan tanyakan petugas di stasiun.", // Teks baru
+    availableTrains: "Kereta yang Tersedia",
+    platformInfoNotice: "Untuk informasi peron dan jam keberangkatan, silakan tanyakan petugas di stasiun.",
   },
   en: {
     title: "Travel Assistant",
@@ -102,11 +102,10 @@ export const text = {
     checkTicket: "Check Ticket",
     findPlatform: "Find Platform",
     boardTrain: "Board Train",
-    availableTrains: "Available Trains", // Teks baru
-    platformInfoNotice: "For platform and departure time information, please ask the staff at the station.", 
+    availableTrains: "Available Trains",
+    platformInfoNotice: "For platform and departure time information, please ask the staff at the station.",
   }
 };
-
 
 export const facilitiesData = [
     { icon: 'Coffee', name: 'Kafe/Resto', available: true },
@@ -129,12 +128,5 @@ export const availableTrains = {
   ],
   kiaracondong: [
     'Pasundan', 'Kutojaya Selatan', 'Serayu', 'Pangandaran', 'Papandayan'
-  ],
-
-  kiaracondong: [
-    { name: 'Kutojaya Selatan', destination: 'Kutoarjo', type: 'Ekonomi' },
-    { name: 'Lokal Cibatu', destination: 'Cibatu', type: 'Lokal' },
-    { name: 'Pasundan', destination: 'Surabaya Gubeng', type: 'Ekonomi' },
-    { name: 'Kahuripan', destination: 'Blitar', type: 'Ekonomi' },
   ]
 };
