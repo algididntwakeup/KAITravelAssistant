@@ -94,7 +94,12 @@ export const StationInfoHub = ({ t, stationData, selectedStation, facilities, an
                                         t={t}
                                         trains={availableTrains[selectedStation]}
                                     />
-                    <StationMap t={t} ticketData={ticketData} />
+                  <StationMap 
+                        t={t} 
+                        ticketData={ticketData} 
+                        selectedStation={selectedStation}
+                        stationData={stationData} // <-- TAMBAHKAN BARIS INI
+                        />
                 </div>
             )}
             
