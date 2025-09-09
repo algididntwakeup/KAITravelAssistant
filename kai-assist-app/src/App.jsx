@@ -80,6 +80,7 @@ const App = () => {
           showOfflineNotice={showOfflineNotice}       
           setShowOfflineNotice={setShowOfflineNotice} 
         />
+        <FaceRecognition t={t} />
         <StationSelection t={t} selectedStation={selectedStation} setSelectedStation={setSelectedStation} />
         
         <StationInfoHub 
@@ -93,7 +94,6 @@ const App = () => {
           availableTrains={availableTrains}
         />
 
-        <FaceRecognition t={t} />
         <QRScanner 
             t={t} 
             ticketData={ticketData} 
