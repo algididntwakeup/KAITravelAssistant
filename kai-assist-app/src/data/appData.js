@@ -68,7 +68,8 @@ export const text = {
     findPlatform: "Cari Peron",
     boardTrain: "Naik Kereta",
     availableTrains: "Kereta yang Tersedia",
-    platformInfoNotice: "Untuk informasi peron dan jam keberangkatan, silakan tanyakan petugas di stasiun.",
+    platformInfoNotice: "Untuk informasi peron dan jam keberangkatan yang lebih akurat, harap tanyakan petugas di stasiun.",
+    platformQuo : "*Merupakan jadwal kereta tambahan"
   },
   en: {
     title: "Travel Assistant",
@@ -104,6 +105,7 @@ export const text = {
     boardTrain: "Board Train",
     availableTrains: "Available Trains",
     platformInfoNotice: "For platform and departure time information, please ask the staff at the station.",
+    platformQuo : "*Additional train schedule"
   }
 };
 
@@ -123,10 +125,23 @@ export const announcementsData = [
 
 export const availableTrains = {
   bandung: [
-    'Argo Parahyangan', 'Lodaya', 'Argo Wilis', 'Cikuray', 'Malabar', 
-    'Harina', 'Papandayan', 'Ciremai', 'Turangga', 'Pangandaran'
+    { name: 'Argo Parahyangan', times: ['05:00', '06:35','10:25*', '11:05', '13:05', '19:25'] },
+    { name: 'Lodaya', times: ['06:30', '10:10*', '18:40', '21:15*'] },
+    { name: 'Argo Wilis', times: ['07:00'] },
+    { name: 'Cikuray', times: ['08:08', '20:55'] },
+    { name: 'Malabar', times: ['09:30', '18:10'] },
+    { name: 'Harina', times: ['09:50', '21:35'] },
+    { name: 'Papandayan', times: ['09:54', '14:54'] },
+    { name: 'Pangandaran', times: ['11:53', '21:54'] },
+    { name: 'Ciremai', times: ['16:55'] },
+    { name: 'Turangga', times: ['17:40'] },
+    { name: 'Mutiara Selatan', times: ['20:00'] },
   ],
   kiaracondong: [
-    'Pasundan', 'Kutojaya Selatan', 'Serayu', 'Pangandaran', 'Papandayan'
+    { name: 'Pasundan', times: ['05:50', '10:15'] },
+    { name: 'Kutojaya Selatan', times: ['08:00', '20:45'] },
+    { name: 'Serayu', times: ['09:00', '21:00'] },
+    { name: 'Papandayan', times: ['09:54', '14:54'] },
+    { name: 'Pangandaran', times: ['11:53', '21:54'] },
   ]
 };

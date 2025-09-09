@@ -51,11 +51,11 @@ export const StationMap = ({ t, ticketData, selectedStation, stationData }) => {
                     </>
                 )}
                 
-                <rect x="40" y="50" width="15" height="15" fill="#10b981" rx="2"/>
-                <text x="58" y="62" className="text-xs fill-gray-700">Toilet</text>
+                <rect x="320" y="50" width="15" height="15" fill="#10b981" rx="2"/>
+                <text x="338" y="62" className="text-xs fill-gray-700">Toilet</text>
                 
-                <rect x="320" y="50" width="15" height="15" fill="#f59e0b" rx="2"/>
-                <text x="338" y="62" className="text-xs fill-gray-700">Kantin</text>
+                <rect x="40" y="50" width="15" height="15" fill="#f59e0b" rx="2"/>
+                <text x="58" y="62" className="text-xs fill-gray-700">Kantin</text>
             </svg>
         </div>
     </div>

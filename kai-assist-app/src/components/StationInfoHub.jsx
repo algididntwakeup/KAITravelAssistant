@@ -79,13 +79,13 @@ export const StationInfoHub = ({ t, stationData, selectedStation, facilities, an
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                              <div className="group bg-white rounded-lg p-4 border-l-4 border-green-500 shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
-                                <p className="text-green-800 font-medium flex items-center">🚉 Stasiun Selatan <span className="ml-2 w-2 h-2 bg-green-500 rounded-full animate-pulse"></span></p>
-                                <p className="text-green-600 text-sm mt-1">Untuk Kereta Lokal</p>
+                                <p className="text-green-800 font-medium flex items-center">🚄 Stasiun Utara <span className="ml-2 w-2 h-2 bg-green-500 rounded-full animate-pulse"></span></p>
+                                <p className="text-green-600 text-sm mt-1">Untuk Kereta Antar Kota</p>
                                 <div className="mt-2 text-xs text-green-500">● Aktif 24/7</div>
                             </div>
                             <div className="group bg-white rounded-lg p-4 border-l-4 border-blue-500 shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
-                                <p className="text-blue-800 font-medium flex items-center">🚄 Stasiun Utara <span className="ml-2 w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span></p>
-                                <p className="text-blue-600 text-sm mt-1">Untuk Kereta Antar Kota</p>
+                                <p className="text-blue-800 font-medium flex items-center">🚉 Stasiun Selatan <span className="ml-2 w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span></p>
+                                <p className="text-blue-600 text-sm mt-1">Untuk Kereta Lokal</p>
                                 <div className="mt-2 text-xs text-blue-500">● Aktif 24/7</div>
                             </div>
                         </div>
