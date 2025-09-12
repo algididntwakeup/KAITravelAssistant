@@ -101,7 +101,6 @@ const App = () => {
             isLoading={isLoading}
             error={error}
         />
-        <TicketInfo t={t} ticketData={ticketData} />
         <TimeReminder t={t} ticketData={ticketData} currentTime={currentTime} />
         
       </main>
