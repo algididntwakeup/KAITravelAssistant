@@ -93,14 +93,14 @@ const App = () => {
           // Kirim data jadwal kereta ke StationInfoHub
           availableTrains={availableTrains}
         />
-
-        <QRScanner 
+      {/* aktifkan kembali jika QRScanner sudah siap */}
+        {/* <QRScanner 
             t={t} 
             ticketData={ticketData} 
             simulateQRScan={simulateQRScan} 
             isLoading={isLoading}
             error={error}
-        />
+        /> */}
         <TimeReminder t={t} ticketData={ticketData} currentTime={currentTime} />
         
       </main>
