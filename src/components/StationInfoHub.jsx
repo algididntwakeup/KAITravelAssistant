@@ -1,105 +1,165 @@
+// src/components/StationInfoHub.jsx
 import React, { useState } from 'react';
-import StationMap from './StationMap';
-import Facilities from './Facilities';
-import Announcements from './Announcements';
-import appData from '../data/appData';
+import { Info, Car, Users, Clock, MapPin, Wifi, Coffee, ShoppingBag, CreditCard, Phone, AlertCircle, Landmark } from 'lucide-react';
 
-function StationInfoHub() {
-  // State untuk menyimpan stasiun yang dipilih, defaultnya 'bandung'
-  const [selectedStationId, setSelectedStationId] = useState('bandung');
+import { AvailableTrains } from './AvailableTrains';
+import { StationMap } from './StationMap';
+import { ProcedureGuide } from './ProcedureGuide';
 
-  // Mendapatkan data stasiun yang dipilih dari appData
-  const selectedStation = appData.stations[selectedStationId];
+const iconMap = {
+    Wifi, Coffee, ShoppingBag, CreditCard, Phone, Landmark, Car, Users, Clock
+};
 
-  // Fungsi untuk menangani perubahan pilihan di dropdown
-  const handleStationChange = (event) => {
-    setSelectedStationId(event.target.value);
-  };
+const colorStyles = {
+    // ... (objek colorStyles tetap sama)
+    green: { gradient: 'from-green-50 to-green-100 border-green-200', bg: 'bg-green-500', text: 'text-green-800', textMedium: 'text-green-700' },
+    blue: { gradient: 'from-blue-50 to-blue-100 border-blue-200', bg: 'bg-blue-500', text: 'text-blue-800', textMedium: 'text-blue-700' },
+    purple: { gradient: 'from-purple-50 to-purple-100 border-purple-200', bg: 'bg-purple-500', text: 'text-purple-800', textMedium: 'text-purple-700' },
+    orange: { gradient: 'from-orange-50 to-orange-100 border-orange-200', bg: 'bg-orange-500', text: 'text-orange-800', textMedium: 'text-orange-700' },
+    gray: { gradient: 'from-gray-50 to-gray-100 border-gray-200', bg: 'bg-gray-400', text: 'text-gray-600', textMedium: 'text-gray-500' }
+};
 
-  // State untuk menyimpan tab yang aktif
-  const [activeTab, setActiveTab] = useState('info');
+export const StationInfoHub = ({ t, stationData, selectedStation, facilities, announcements, ticketData, availableTrains }) => {
+    const [activeTab, setActiveTab] = useState('info');
+    const currentStation = stationData[selectedStation];
 
-  return (
-    <div className="bg-white p-4 sm:p-6 md:p-8 rounded-2xl shadow-lg max-w-4xl w-full mx-auto my-8 border border-gray-200">
-      {/* Header dan Dropdown Pemilihan Stasiun */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
-        <div>
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">
-            Pusat Informasi Stasiun
-          </h1>
-          <p className="text-gray-500 mt-1">
-            Pilih stasiun untuk melihat detail informasi.
-          </p>
+    const allFacilities = [
+        { name: t.parking, icon: 'Car', detail: currentStation.parking, available: true, subDetail: '💰 Rp 5.000/jam', color: 'green' },
+        { name: t.accessGate, icon: 'Users', detail: currentStation.gates, available: true, subDetail: '🎫 Akses cepat tersedia', color: 'orange' },
+        { name: t.operationalHours, icon: 'Clock', detail: currentStation.hours, available: true, subDetail: '🕐 Selalu buka untuk Anda', color: 'purple' },
+        ...facilities.map(f => ({ ...f, color: f.available ? 'green' : 'gray' }))
+    ];
+
+    return (
+        <div className="bg-white rounded-xl shadow-lg p-6 max-w-6xl mx-auto">
+            {/* ... (Header Komponen tetap sama) ... */}
+            <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg p-4 mb-6 text-white relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-purple-700 opacity-80"></div>
+                <div className="relative z-10">
+                    <h2 className="text-xl font-bold flex items-center">
+                        <Info className="h-6 w-6 mr-3 animate-pulse" />
+                        {t.stationInfo}
+                    </h2>
+                    <p className="text-blue-100 mt-1">Informasi lengkap stasiun kereta api</p>
+                </div>
+            </div>
+
+            {/* Navigasi Tab */}
+            <div className="flex mb-6 bg-gray-100 rounded-lg p-1">
+                {[
+                    { id: 'info', label: 'Info Utama', icon: Info },
+                    { id: 'facilities', label: 'Fasilitas', icon: Coffee },
+                    // Tambahkan 'shortLabel' untuk versi mobile
+                    { id: 'announcements', label: 'Pengumuman & Panduan', shortLabel: 'Info', icon: AlertCircle }
+                ].map(tab => (
+                    <button
+                        key={tab.id}
+                        onClick={() => setActiveTab(tab.id)}
+                        className={`flex-1 flex items-center justify-center py-2 px-4 rounded-md text-sm font-medium transition-all duration-300 ${
+                            activeTab === tab.id 
+                                ? 'bg-white text-blue-600 shadow-md transform scale-105' 
+                                : 'text-gray-600 hover:text-blue-600 hover:bg-white/50'
+                        }`}
+                    >
+                        <tab.icon className="h-4 w-4 mr-2" />
+                        {/* Logika untuk menampilkan label yang berbeda */}
+                        <span className="hidden sm:inline">{tab.label}</span>
+                        <span className="sm:hidden">{tab.shortLabel || tab.label}</span>
+                    </button>
+                ))}
+            </div>
+
+            {/* ... (Konten Tab tetap sama) ... */}
+            {activeTab === 'info' && (
+                <div className="space-y-6 animate-fadeIn">
+                    <div className="p-4 bg-gradient-to-r from-blue-50 to-green-50 rounded-xl border-2 border-transparent bg-clip-padding shadow-inner">
+                        <div className="flex items-center mb-3">
+                            <MapPin className="h-5 w-5 text-blue-600 mr-2" />
+                            <span className="font-semibold text-gray-800">{t.stationType || 'Jenis Stasiun'}</span>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                             <div className="group bg-white rounded-lg p-4 border-l-4 border-green-500 shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
+                                <p className="text-green-800 font-medium flex items-center">🚄 Stasiun Utara <span className="ml-2 w-2 h-2 bg-green-500 rounded-full animate-pulse"></span></p>
+                                <p className="text-green-600 text-sm mt-1">Untuk Kereta Antar Kota</p>
+                                <div className="mt-2 text-xs text-green-500">● Aktif 24/7</div>
+                            </div>
+                            <div className="group bg-white rounded-lg p-4 border-l-4 border-blue-500 shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
+                                <p className="text-blue-800 font-medium flex items-center">🚉 Stasiun Selatan <span className="ml-2 w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span></p>
+                                <p className="text-blue-600 text-sm mt-1">Untuk Kereta Lokal</p>
+                                <div className="mt-2 text-xs text-blue-500">● Aktif 24/7</div>
+                            </div>
+                        </div>
+                    </div>
+                              <AvailableTrains 
+                                        t={t}
+                                        trains={availableTrains[selectedStation]}
+                                    />
+                  <StationMap 
+                        t={t} 
+                        ticketData={ticketData} 
+                        selectedStation={selectedStation}
+                        stationData={stationData} // <-- TAMBAHKAN BARIS INI
+                        />
+                </div>
+            )}
+            
+            {activeTab === 'facilities' && (
+                 <div className="animate-fadeIn">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-4">Semua Fasilitas Stasiun</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {allFacilities.map((facility, index) => {
+                            const IconComponent = iconMap[facility.icon];
+                            const styles = colorStyles[facility.color] || colorStyles.gray;
+                            return (
+                                <div key={index} className={`group bg-gradient-to-br rounded-xl p-5 border hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 ${
+                                    facility.available ? styles.gradient : colorStyles.gray.gradient
+                                }`}>
+                                    <div className="flex items-center mb-3">
+                                        <div className={`p-2 rounded-lg shadow-md group-hover:scale-110 transition-transform ${facility.available ? styles.bg : colorStyles.gray.bg}`}>
+                                            {IconComponent && <IconComponent className="h-5 w-5 text-white" />}
+                                        </div>
+                                        <span className={`font-semibold ml-3 ${facility.available ? styles.text : colorStyles.gray.text}`}>{facility.name}</span>
+                                    </div>
+                                    <p className={`font-medium ${facility.available ? styles.textMedium : colorStyles.gray.textMedium}`}>{facility.detail || (facility.available ? 'Tersedia' : 'Tidak Tersedia')}</p>
+                                    {facility.subDetail && <div className="mt-2 text-sm text-gray-500">{facility.subDetail}</div>}
+                                </div>
+                            )
+                        })}
+                    </div>
+                </div>
+            )}
+
+            {activeTab === 'announcements' && (
+                <div className="animate-fadeIn space-y-6">
+                    <div>
+                        <h3 className="text-lg font-semibold text-gray-800 mb-4">Pengumuman Terbaru</h3>
+                        <div className="space-y-3">
+                            {announcements.map((announcement, index) => (
+                                <div key={index} className={`p-4 rounded-xl border-l-4 shadow-sm hover:shadow-md transition-shadow ${
+                                    announcement.type === 'info' ? 'bg-blue-50 border-blue-500' :
+                                    announcement.type === 'warning' ? 'bg-yellow-50 border-yellow-500' :
+                                    'bg-green-50 border-green-500'
+                                }`}>
+                                    <div className="flex items-start">
+                                        <AlertCircle className={`h-5 w-5 mt-0.5 mr-3 ${
+                                            announcement.type === 'info' ? 'text-blue-600' :
+                                            announcement.type === 'warning' ? 'text-yellow-600' :
+                                            'text-green-600'
+                                        }`} />
+                                        <p className={`text-sm ${
+                                            announcement.type === 'info' ? 'text-blue-800' :
+                                            announcement.type === 'warning' ? 'text-yellow-800' :
+                                            'text-green-800'
+                                        }`}>{announcement.message}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    <hr className="border-gray-200" />
+                    <ProcedureGuide t={t} />
+                </div>
+            )}
         </div>
-        <div className="mt-4 sm:mt-0">
-          <select
-            value={selectedStationId}
-            onChange={handleStationChange}
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 shadow-sm"
-            aria-label="Pilih Stasiun"
-          >
-            {/* Membuat opsi dropdown dari data stasiun */}
-            {Object.keys(appData.stations).map((stationId) => (
-              <option key={stationId} value={stationId}>
-                {appData.stations[stationId].name}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>
-
-      {/* Navigasi Tab */}
-      <div className="border-b border-gray-200">
-        <nav className="flex flex-wrap -mb-px" aria-label="Tabs">
-          <button
-            onClick={() => setActiveTab('info')}
-            className={`whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm ${
-              activeTab === 'info'
-                ? 'border-blue-500 text-blue-600'
-                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-            } mx-2`}
-          >
-            Info Utama
-          </button>
-          <button
-            onClick={() => setActiveTab('facilities')}
-            className={`whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm ${
-              activeTab === 'facilities'
-                ? 'border-blue-500 text-blue-600'
-                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-            } mx-2`}
-          >
-            Fasilitas
-          </button>
-          <button
-            onClick={() => setActiveTab('announcements')}
-            className={`whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm ${
-              activeTab === 'announcements'
-                ? 'border-blue-500 text-blue-600'
-                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-            } mx-2`}
-          >
-            Pengumuman & Panduan
-          </button>
-        </nav>
-      </div>
-
-      {/* Konten Tab */}
-      <div className="py-6">
-        {activeTab === 'info' && (
-          <StationMap
-            mapUrl={selectedStation.mapUrl}
-            stationName={selectedStation.name}
-            availableTrains={selectedStation.availableTrains}
-          />
-        )}
-        {activeTab === 'facilities' && (
-          <Facilities facilities={selectedStation.facilities} />
-        )}
-        {activeTab === 'announcements' && <Announcements />}
-      </div>
-    </div>
-  );
-}
-
-export default StationInfoHub;
+    );
+};

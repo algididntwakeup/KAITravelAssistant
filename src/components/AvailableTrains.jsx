@@ -1,57 +1,73 @@
+// src/components/AvailableTrains.jsx
 import React from 'react';
+import { Train, AlertCircle, Clock } from 'lucide-react';
 
-// Komponen untuk menampilkan daftar kereta yang tersedia dalam format dropdown
-function AvailableTrains({ trains }) {
+export const AvailableTrains = ({ t, trains }) => {
+  // Pemeriksaan keamanan jika data kereta tidak ada
+  if (!trains || trains.length === 0) {
+    return (
+      <div className="bg-white rounded-xl shadow-lg p-6 text-center text-gray-500">
+        Informasi jadwal tidak tersedia untuk stasiun ini.
+      </div>
+    );
+  }
+
   return (
-    <div className="mt-6">
-      <h3 className="text-lg font-semibold text-gray-700 mb-4">
-        Jadwal Kereta Tersedia
-      </h3>
-      <div className="space-y-3">
-        {/* Melakukan iterasi untuk setiap kereta dan menampilkannya sebagai dropdown */}
-        {trains.map((train) => (
-          <details
-            key={train.name}
-            className="group bg-gray-50 p-3 rounded-lg border border-gray-200 hover:border-blue-300 transition-all"
+    
+    <div className="bg-white rounded-xl shadow-lg p-6">
+      <h2 className="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+        <Train className="h-5 w-5 mr-2 text-blue-600" />
+        {t.availableTrains}
+      </h2>
+      
+      {/* Banner Informasi */}
+      <div className="bg-red-50 border-l-4 border-red-400 text-red-800 p-4 rounded-r-lg mt-6">
+        <div className="flex">
+          <div className="py-1">
+            <AlertCircle className="h-5 w-5 text-red-500 mr-3 flex-shrink-0" />
+          </div>
+          <div>
+            <p className="text-sm">{t.platformInfoNotice}</p>
+          </div>
+        </div>
+      </div>
+      {/* Banner Informasi tambahan */}
+      <div className="bg-blue-50 border-l-4 border-blue-400 text-blue-800 p-4 rounded-r-lg mt-3 mb-6">
+        <div className="flex">
+          <div className="py-1">
+            <AlertCircle className="h-5 w-5 text-blue-500 mr-3 flex-shrink-0" />
+          </div>
+          <div>
+            <p className="text-sm">{t.platformQuo}</p>
+          </div>
+        </div>
+      </div>
+
+
+      {/* Daftar Kereta dengan jadwal */}
+      <div className="space-y-4 mb-4">
+        {trains.map((train, index) => (
+          <div 
+            key={index} 
+            className="p-4 bg-gray-50 rounded-lg border border-gray-200 transition-shadow hover:shadow-md"
           >
-            <summary className="flex justify-between items-center font-medium cursor-pointer list-none">
-              <span className="text-gray-800">{train.name}</span>
-              <span className="transition-transform transform group-open:rotate-180">
-                <svg
-                  className="w-5 h-5 text-gray-500"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
+            <p className="font-semibold text-gray-800">{train.name}</p>
+            <div className="flex flex-wrap items-center gap-2 mt-2">
+              <Clock className="h-4 w-4 text-gray-400 flex-shrink-0" />
+              {train.times.map((time) => (
+                <span 
+                  key={time}
+                  className="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded-full"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M19 9l-7 7-7-7"
-                  ></path>
-                </svg>
-              </span>
-            </summary>
-            {/* Daftar jadwal keberangkatan */}
-            <div className="mt-3 pt-3 border-t border-gray-200">
-              <p className="text-sm text-gray-600 mb-2">Jam Keberangkatan:</p>
-              <div className="flex flex-wrap gap-2">
-                {train.schedule.map((time) => (
-                  <span
-                    key={time}
-                    className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-1 rounded-full"
-                  >
-                    {time}
-                  </span>
-                ))}
-              </div>
+                  {time}
+                </span>
+              ))}
             </div>
-          </details>
+          </div>
         ))}
       </div>
+
+
     </div>
   );
-}
-
-export default AvailableTrains;
+};
