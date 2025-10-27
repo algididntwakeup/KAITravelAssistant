@@ -3,7 +3,7 @@
 // Data tiket tiruan untuk simulasi
 export const mockTicketData = {
   passengerName: "John Doe",
-  trainName: "Argo Parahyangan",
+  trainName: "Parahyangan",
   trainNumber: "KA 06",
   car: "EKS 1",
   seat: "5A",
@@ -125,7 +125,7 @@ export const announcementsData = [
 
 export const availableTrains = {
   bandung: [
-    { name: 'Argo Parahyangan', times: ['05:00', '06:35','10:25*', '11:05', '13:05', '19:25'] },
+    { name: 'Parahyangan', times: ['05:00', '06:35','10:25*', '11:05', '13:05', '19:25'] },
     { name: 'Lodaya', times: ['06:30', '10:10*', '18:40', '21:15*'] },
     { name: 'Argo Wilis', times: ['07:00'] },
     { name: 'Cikuray', times: ['08:08', '20:55'] },

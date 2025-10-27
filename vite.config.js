@@ -8,13 +8,12 @@ export default defineConfig({
     react(),
     tailwindcss({
       config: {
-        // 1. TAMBAHKAN BAGIAN 'content' INI. Ini sangat penting!
-        // Ini memberitahu Tailwind untuk memindai semua file .jsx di folder src
-        // untuk menemukan class seperti 'from-kai-purple-dark'.
+        // Ini adalah 'content' yang benar
         content: [
           "./index.html",
           "./src/**/*.{js,ts,jsx,tsx}",
         ],
+        // Ini adalah theme kustom kamu (sudah benar)
         theme: {
           extend: {
             fontFamily: {
